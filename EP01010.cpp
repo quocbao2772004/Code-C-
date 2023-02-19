@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
+}
+int test;
+ll n,k;
+ll sum;
+int main()
+{
+    goi();
+    cin>>test;
+    while(test--)
+    {
+        cin>>n>>k;
+        for(int i=1;i<=n;i++)sum+=(i%k);
+        cout<<(sum==k?1:0)<<endl;
+    }
+    return 0;
+}

@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
+}
+int a,b;
+ll sum;
+int main()
+{
+    goi();
+    cin>>a>>b;
+    int x=sqrt(a);
+    if(x*x!=a)x+=1;
+    b=sqrt(b);
+    for(int i=x;i<=b;i++)sum+=(i*i);
+    cout<<sum;
+    return 0;
+}

@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
+}
+int check(ll n)
+{
+    ll nt=2;
+    while(nt<=sqrt(n))
+    {
+        if(n%nt==0)
+        {
+            if(nt!=2&&nt!=3)return 0;
+            while(n%nt==0)
+            {
+                n/=nt;
+            }
+        }
+        nt++;
+    }
+    if(n>1&&n!=2&&n!=3)return 0;
+    return 1;
+}
+ll a;
+ll sum;
+ll b;
+int test;
+int main()
+{
+    goi();
+    cin>>test;
+    while(test--)
+    {
+        cin>>a>>b;
+        ll ucln=__gcd(a,b);
+        ll t1=a/ucln;ll t2=b/ucln;
+        ll bcnn=a*b/ucln;
+        ll ta=bcnn/a;
+        ll tb=bcnn/b;
+        if((check(ta)&&check(tb))&&(check(t1)&&check(t2)))cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
+        
+    }
+    return 0;
+}
