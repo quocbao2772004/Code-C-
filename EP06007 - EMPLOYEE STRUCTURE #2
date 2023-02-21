@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+#define f(i,a,b) for(int i=a;i<=b;i++)
+#define fi freopen("DATA.in","r",stdin)
+#define fo freopen("PTIT.out","w",stdout)
+#define ll long long
+using namespace std;
+
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    fi;fo;
+
+
+}
+struct Employee
+{
+    string ten;
+    string gioitinh;
+    string ntns;
+    string diachi;
+    string mst;
+    string nhd;
+
+};
+int f=0;
+void input(Employee &a)
+{
+    if(f==0)
+    cin.ignore();f=1;
+    getline(cin,a.ten);
+    getline(cin,a.gioitinh);
+    getline(cin,a.ntns);
+    getline(cin,a.diachi);
+    getline(cin,a.mst);
+    getline(cin,a.nhd);
+    //cin.ignore();
+}
+void xuli(string a)
+{
+    int count=0;
+    map<int,string>c;
+    stringstream ss(a);
+    string token;
+    while(getline(ss,token,'/'))
+    {
+        if(token.length()<2)
+            token='0'+token;
+        c[count]=token;
+        count++;
+    }
+    f(i,0,count-1)
+    {
+        cout<<c[i];
+        if(i<count-1)
+            cout<<"/";
+    }
+}
+void printlist(Employee a[],int n)
+{
+    f(i,0,n-1)
+    {
+        string maso=to_string(i+1);
+        while(maso.size()<5)maso='0'+maso;
+        cout<<maso<<" "<<a[i].ten<<" "<<a[i].gioitinh<<" ";
+    xuli(a[i].ntns);
+    cout<<" "<<a[i].diachi<<" "<<a[i].mst<<" ";
+    xuli(a[i].nhd);
+    cout<<endl;
+    }
+
+
+}
+int main(){
+    struct Employee lst[50];
+    int N,i;
+    cin >> N;
+    for(i = 0; i < N; i++) input(lst[i]);
+    printlist(lst,N);
+    return 0;
+}
+
+
+
