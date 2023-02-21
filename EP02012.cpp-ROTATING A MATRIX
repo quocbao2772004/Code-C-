@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+#define f(i,a,b) for(int i=a;i<=b;i++)
+#define f1(i,a,b) for(int i=a;i>=b;i--)
+#define fi freopen("DATA.in","r",stdin)
+#define fo freopen("PTIT.out","w",stdout)
+#define ll long long
+using namespace std;
+
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    //fi;fo;
+
+}
+map<int,map<int,int>>a;
+void solve(int n,int m)
+{
+    int r1=1,rn=n,c1=1,cm=m;
+    while(r1<rn&&c1<cm)
+    {
+        int luu=a[r1+1][c1];
+        f(i,c1,cm)
+        {
+            swap(luu,a[r1][i]);
+        }
+        r1++;
+        f(i,r1,rn)
+        {
+            swap(a[i][cm],luu);
+        }
+        cm--;
+        if(r1<=rn)
+        {
+            f1(i,cm,c1)
+            {
+                swap(a[rn][i],luu);
+            }
+        }
+        rn--;
+        if(c1<=cm)
+        {
+            f1(i,rn,r1)
+            {
+                swap(a[i][c1],luu);
+            }
+        }
+        c1++;
+    }
+}
+
+int main()
+{
+    goi();
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m;
+        cin>>n>>m;
+        f(i,1,n)
+        f(j,1,m)cin>>a[i][j];
+        solve(n,m);
+        f(i,1,n)
+        f(j,1,m)cout<<a[i][j]<<" ";
+        cout<<endl;
+    }
+    return 0;
+}
