@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#define f(i, a, b) for (int i = a; i <= b; i++)
+#define fi freopen("d.inp", "r", stdin)
+#define fo freopen("d.out", "w", stdout);
+#define ll long long
+using namespace std;
+
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    // fi;fo;
+}
+int n;
+int test;
+
+int main()
+{
+    goi();
+    cin >> test;
+    while (test--)
+    {
+        map<int, map<int, int>> a;
+        map<int, int> c;
+        set<int> v;
+        set<int>::iterator it;
+        int ans = 0;
+        cin >> n;
+        f(i, 1, n)
+        {
+           
+            f(j, 1, n)
+            {
+                cin >> a[i][j];
+                v.insert(a[i][j]);
+            }
+            for (it = v.begin(); it != v.end(); it++)
+                c[*it]++;
+                 v.clear();
+        }
+        f(i, 1, n)
+            v.insert(a[1][i]);
+        for (it = v.begin(); it != v.end(); it++)
+            if (c[*it] == n)
+                ans++;
+        cout << ans << endl;
+      
+    }
+    return 0;
+}
