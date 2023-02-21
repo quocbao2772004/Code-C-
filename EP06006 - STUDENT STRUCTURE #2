@@ -1,0 +1,109 @@
+#include <bits/stdc++.h>
+#define f(i,a,b) for(int i=a;i<=b;i++)
+#define fi freopen("DATA.in","r",stdin)
+#define fo freopen("PTIT.out","w",stdout)
+#define ll long long
+using namespace std;
+
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    fi;fo;
+
+}
+ struct Student
+ {
+     string name;
+     string lop;
+     string ntns;
+     double gpa;
+
+ };
+ string msv;
+ void input(Student a[],int n)
+ {
+
+     cin.ignore();
+     f(l,1,n)
+     {
+         getline(cin,a[l].name);
+     getline(cin,a[l].lop);
+     getline(cin,a[l].ntns);
+     cin>>a[l].gpa;
+     cin.ignore();
+
+     }
+
+ }
+
+ void print( Student a[],int n)
+ {
+     f(l,1,n)
+     {
+
+     stringstream ss1(a[l].name);
+     string token1;int co=0;
+     map<int,string>v;
+     while(ss1>>token1)
+     {
+         if(token1[0]>='a'&&token1[0]<='z')token1[0]-=32;
+         f(i,1,token1.length()-1)
+         {
+
+              if(token1[i]>='A'&&token1[i]<='Z')token1[i]+=32;
+         }
+         v[co]=token1;
+         //cout<<token1<<endl;
+         co++;
+     }
+     ss1.clear();
+     msv=to_string(l);
+     while(msv.size()<3)msv='0'+msv;
+     cout<<"B20DCCN"<<msv<<" ";
+     for(auto x=v.begin();x!=v.end();x++)
+     {
+         cout<<x->second<<' ';
+     }
+    // for(int i=0;i<co;i++)cout<<v[i]<<" ";
+    cout<<a[l].lop<<" ";
+
+
+     map<int,string>c;
+     int count=0;
+     //int count=0;
+     stringstream ss(a[l].ntns);
+     string token;
+     while(getline(ss,token,'/'))
+     {
+         if(token.length()<2)token='0'+token;
+         c[count]=token;count++;
+     }
+
+     for(int i=0;i<=count-1;i++)
+     {
+         cout<<c[i];
+         if(i<count-1)cout<<"/";
+     }
+
+     cout<<" "<<fixed<<setprecision(2)<<a[l].gpa<<endl;
+     ss.clear();
+     }
+ }
+ void output(Student a[],int n)
+ {
+     f(l,1,n)
+     cout<<a[l].name<<" "<<a[l].lop<<" "<<a[l].ntns<<endl;
+ }
+int main(){
+    struct Student lst[50];
+    int N;
+    cin >> N;
+    input(lst, N);
+    print(lst, N);
+    return 0;
+}
+
+
+
