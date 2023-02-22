@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+#define f(i,a,b) for(int i=a;i<=b;i++)
+#define f1(i,a,b) for(int i=a;i>=b;i--)
+#define fi freopen("DATA1.in","r",stdin)
+#define fi2 freopen("DATA2.in","r",stdin)
+#define fo freopen("PTIT.out","w",stdout)
+#define ll long long
+#define l length()
+using namespace std;
+
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    //fi;fo;
+
+
+}
+int m,s;
+string c[100001];
+int main() {
+   goi();
+    cin>>m>>s;
+    if(m==1&&s==0)
+    {
+        cout<<"0 0";return 0;
+    }
+    int luus=s;string mi="";
+    f(i,1,m)
+    {
+       int cs=max(0,luus-9*(m-i));
+        if(i==1&&cs==0)
+        {
+            mi=mi+to_string(1);
+            luus--;
+        }
+        else {mi=mi+to_string(cs);
+        luus=luus-cs;}
+       // cout<<cs<<endl;
+    }
+
+    luus=s;
+    string ma="";
+    f(i,1,m)
+    {
+       int cs=min(9,luus);
+       ma=ma+to_string(cs);
+        luus=luus-cs;
+       // cout<<cs<<endl;
+    }
+    if(ma.l!=m||mi.l!=m)
+    {
+        cout<<"-1 -1";
+    }
+    else if(s==0&&m>1)
+    {
+        cout<<"-1 -1";
+    }
+    else
+    {
+        cout<<mi<<" "<<ma;
+    }
+
+    return 0;
+}
