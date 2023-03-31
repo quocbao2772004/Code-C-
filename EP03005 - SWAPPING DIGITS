@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+#define l length()
+#define f(i,a,b) for(int i=a;i<=b;i++)
+#define f1(i,a,b) for(int i=a;i>=b;i--)
+#define f2(i,a,b,k) for(int i=a;i<=b;i+=k)
+#define fi freopen("Document.in","r",stdin)
+#define fo freopen("PTIT.out","w",stdout)
+#define ll long long
+#define pb push_back
+#define ft first
+#define sd second
+using namespace std;
+
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    //fi;fo;
+}
+//12435
+//12364578---->12354678
+//31264578---->31254678
+int test;
+string s;
+int main()
+{
+    goi();
+
+    cin>>test;
+    while(test--)
+    {
+        int luu=-1;int ma=-1;
+        int luu2=-1;
+        cin>>s;
+        f1(i,s.l-1,1)
+        {
+            if(s[i]<s[i-1])
+            {
+                luu=i-1;break;
+            }
+        }
+        if(luu==-1){cout<<-1<<endl;continue;}
+        //cout<<luu<<endl;
+        f(i,luu,s.l-1)
+        {
+            if(s[i]-'0'>ma&&s[i]<s[luu])
+            {
+               ma=s[i]-'0';
+               luu2=i;
+            }
+        }
+        if(luu2==-1){cout<<-1<<endl;continue;}
+        swap(s[luu2],s[luu]);
+        cout<<s<<endl;
+    }
+
+
+
+    return 0;
+}
+
