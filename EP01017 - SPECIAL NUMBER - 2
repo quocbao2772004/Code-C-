@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+#define l length()
+#define f0(i,a,b) for(int i=a;i<b;i++)
+#define f(i,a,b) for(int i=a;i<=b;i++)
+#define f1(i,a,b) for(int i=a;i>=b;i--)
+#define f2(i,a,b,k) for(int i=a;i<=b;i+=k)
+#define fi freopen("Document.in","r",stdin)
+#define fo freopen("PTIT.out","w",stdout)
+#define ll long long
+#define pb push_back
+#define ft first
+#define sd second
+#define vi vector<int>
+
+using namespace std;
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    //fi;fo;
+
+}
+const ll mod=1e9+7;
+ll mu(ll n,ll k)
+{
+    ll t=1;
+    f(i,1,k)
+    {
+        t=((t%mod)*(n%mod))%mod;
+    }
+    return t;
+}
+int test;
+ll n,k;
+
+int main()
+{
+    goi();
+    cin>>test;
+    while(test--)
+    {
+        cin>>n>>k;
+        ll ans=0;
+        ll x=log(k)/log(2);
+        ll c=mu(2,x);
+        ll y=k-mu(2,x);
+        ans+=mu(n,x);
+        while(y>0)
+        {
+            while(y<mu(2,x))
+            {
+                x--;
+            }
+            y-=mu(2,x);
+            ans=(ans%mod+mu(n,x)%mod)%mod;
+        }
+        cout<<ans<<endl;
+
+    }
+    return 0;
+}
