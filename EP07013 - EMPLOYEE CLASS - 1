@@ -1,70 +1,46 @@
-#include <bits/stdc++.h>
-#define f(i,a,b) for(int i=a;i<=b;i++)
-#define fi freopen("DATA.in","r",stdin)
+#include<bits/stdc++.h>
+#define fi freopen("Ptit.in","r",stdin)
 #define fo freopen("PTIT.out","w",stdout)
-#define ll long long
 using namespace std;
-
-void goi()
+class Employee
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-   // fi;fo;
+      private:
+             string id="00001";
+             string name;
+             string gender;
+             string birth;
+             string address;
+             string Tax_number;
+             string contract_date;
+      public:
+             Employee(){}
+             void display()
+             {
+                 if(birth[1]=='/')birth.insert(0,"0");
+                if(birth[4]=='/')birth.insert(3,"0");
+                cout<<id<<" "<<name<<" "<<gender<<" "<<birth<<" "<<address<<" "<<Tax_number<<" "<<contract_date;
+             }
+             friend istream& operator>>(istream&input, Employee&e)
+             {
+                getline(input,e.name);
+                getline(input,e.gender);
+                getline(input,e.birth);
+                getline(input,e.address);
+                getline(input,e.Tax_number);
+                getline(input,e.contract_date);
+                return input;
+             }
+      
 
-
-}
-struct Employee
-{
-    string ten;
-    string gioitinh;
-    string ntns;
-    string diachi;
-    string mst;
-    string nhd;
-
+      
 };
-void input(Employee &a)
+int main()
 {
-    getline(cin,a.ten);
-    getline(cin,a.gioitinh);
-    getline(cin,a.ntns);
-    getline(cin,a.diachi);
-    getline(cin,a.mst);
-    getline(cin,a.nhd);
-}
-void xuli(string a)
-{
-    int count=0;
-    map<int,string>c;
-    stringstream ss(a);
-    string token;
-    while(getline(ss,token,'/'))
-    {
-        if(token.length()<2)
-            token='0'+token;
-        c[count]=token;
-        count++;
-    }
-    f(i,0,count-1)
-    {
-        cout<<c[i];
-        if(i<count-1)
-            cout<<"/";
-    }
-}
-void print(Employee &a)
-{
-    cout<<"00001 "<<a.ten<<" "<<a.gioitinh<<" ";
-    xuli(a.ntns);
-    cout<<" "<<a.diachi<<" "<<a.mst<<" ";
-    xuli(a.nhd);
-
-}
-int main(){
-    struct Employee a;
-    input(a);
-    print(a);
+    //fi;fo;
+   Employee e;
+   cin>>e;
+   e.display();
+   
+   
     return 0;
 }
-
