@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+#define f(i,a,b) for(int i=a;i<=b;i++)
+#define fi freopen("DATA.in","r",stdin)
+#define fo freopen("PTIT.out","w",stdout)
+#define ll long long
+using namespace std;
+
+void goi()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+   fi;fo;
+
+
+}
+string name;
+string id;
+ll lcb,heso;
+int main(){
+   // goi();
+    getline(cin,id);
+    getline(cin,name);
+    cin>>lcb;
+    string x="";x=x+id[2]+id[3];
+    stringstream ss;ss<<x;
+    ss>>heso;
+    //cout<<heso<<endl;
+    x="";
+    x=x+id[0]+id[1];
+    ll qht;
+    if(x=="HT")qht=2000000;
+    else if(x=="HP")qht=900000;
+    else if(x=="GV")qht=500000;
+    cout<<id<<" "<<name<<" "<<heso<<" "<<qht<<" "<<heso*lcb+qht;
+    return 0;
+}
+
