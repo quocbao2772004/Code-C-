@@ -1,28 +1,28 @@
-#include <bits/stdc++.h>
-#define f(i,a,b) for(int i=a;i<=b;i++)
-#define fi freopen("DATA.in","r",stdin)
-#define fo freopen("PTIT.out","w",stdout)
-#define ll long long
+#include<bits/stdc++.h>
 using namespace std;
-
-void goi()
+class Fraction
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    //fi;fo;
-
-}
-
-string s;
-int n,m;
-ll a,b,c,d;
-int test;
+      private:
+             long long numerator;
+             long long denominator;
+      public: 
+             Fraction(){}
+             void getAnswer()
+             {
+                long long gcd=__gcd(numerator,denominator);
+                cout<<numerator/gcd<<"/"<<denominator/gcd;
+             }
+             friend istream& operator >>(istream& input,  Fraction& f)
+             {
+                input>>f.numerator>>f.denominator;
+                return input;
+             }
+};
 int main()
 {
-    goi();
-    cin>>a>>b;
-    ll x=__gcd(a,b);
-    cout<<a/x<<"/"<<b/x;
+    Fraction f;
+    cin>>f;
+    f.getAnswer();
+   
     return 0;
 }
