@@ -7,14 +7,12 @@ class matrix
      private:
              int n;
              int m;
-             int a[50][50];
+             map<int,map<int,int>> a;
      public:
              matrix(){}
              void solve()
              {
-                int b[50][50],c[50][50];
-                memset(b,0,sizeof(b));
-                memset(c,0,sizeof(c));
+                map<int,map<int,int>>b,c;
                 for(int i=0;i<n;i++)
                 {
                     for(int j=0;j<m;j++)
