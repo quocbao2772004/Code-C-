@@ -1,38 +1,47 @@
-#include <bits/stdc++.h>
-#define f(i,a,b) for(int i=a;i<=b;i++)
-#define fi freopen("DATA.in","r",stdin)
+#include<bits/stdc++.h>
+#define fi freopen("Ptit.in","r",stdin)
 #define fo freopen("PTIT.out","w",stdout)
-#define ll long long
 using namespace std;
-
-void goi()
+class Teacher
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-   fi;fo;
+      private:
+             string archetype_code;
+             string name;
+             long long base_salary;
+      public:
+             Teacher(){}
+             void display()
+             {
+                long long salary_level=(archetype_code[2]-'0')*10+(archetype_code[3]-'0');
+                string position="";
+                position=position+archetype_code[0]+archetype_code[1];
+                long long supporting_fund=0;
+                if(position=="HT")supporting_fund=2000000;
+                else if(position=="HP")supporting_fund=900000;
+                else supporting_fund=500000;
+                long long total_income=0;
+                total_income=salary_level*base_salary+supporting_fund;
+                cout<<archetype_code<<" "<<name<<" "<<salary_level<<" "<<supporting_fund<<" "<<total_income<<endl;
+                
+             }
+             friend istream& operator>>(istream&input, Teacher&e)
+             {
+                getline(input,e.archetype_code);
+                getline(input,e.name);
+                input>>e.base_salary;
+                return input;
+             }
+      
 
-
-}
-string name;
-string id;
-ll lcb,heso;
-int main(){
-   // goi();
-    getline(cin,id);
-    getline(cin,name);
-    cin>>lcb;
-    string x="";x=x+id[2]+id[3];
-    stringstream ss;ss<<x;
-    ss>>heso;
-    //cout<<heso<<endl;
-    x="";
-    x=x+id[0]+id[1];
-    ll qht;
-    if(x=="HT")qht=2000000;
-    else if(x=="HP")qht=900000;
-    else if(x=="GV")qht=500000;
-    cout<<id<<" "<<name<<" "<<heso<<" "<<qht<<" "<<heso*lcb+qht;
+      
+};
+int main()
+{
+    //fi;fo;
+   Teacher e;
+   cin>>e;
+   e.display();
+   
+   
     return 0;
 }
-
