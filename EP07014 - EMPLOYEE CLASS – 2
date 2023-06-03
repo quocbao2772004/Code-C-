@@ -1,38 +1,50 @@
-#include <bits/stdc++.h>
-#define f(i,a,b) for(int i=a;i<=b;i++)
-#define fi freopen("DATA.in","r",stdin)
+#include<bits/stdc++.h>
+#define fi freopen("Ptit.in","r",stdin)
 #define fo freopen("PTIT.out","w",stdout)
-#define ll long long
 using namespace std;
-
-void goi()
+class Employee
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-   fi;fo;
+      private:
+             string id="NV01";
+             string name;
+             long long base_salary;
+             int workday_count;
+             string position;
+      public:
+             Employee(){}
+             void display()
+             {
+                 double bonus=0;
+                 if(workday_count<22)bonus=0;
+                 else if(workday_count>=22 && workday_count<25)bonus=0.1;
+                 else bonus=0.2;
+                 int supporting_fund=0;
+                 if(position=="GD")supporting_fund=250000;
+                 else if(position=="PGD")supporting_fund=200000;
+                 else if(position=="TP")supporting_fund=180000;
+                 else if(position=="NV")supporting_fund=150000;
+                 long long monthly_salary=base_salary*workday_count;
+                 long long bonus_salary=monthly_salary*bonus;
+                 long long total_income=monthly_salary+bonus_salary+supporting_fund;
+                 cout<<id<<" "<<name<<" "<<monthly_salary<<" "<<bonus_salary<<" "<<supporting_fund<<" "<<total_income<<endl;
+             }
+             friend istream& operator>>(istream&input, Employee&e)
+             {
+                getline(input,e.name);
+                input>>e.base_salary>>e.workday_count>>e.position;
+                return input;
+             }
+      
 
-
-}
-string name;
-ll lcb,snl;
-string position;
-int main(){
-    //goi();
-    getline(cin,name);
-    cin>>lcb>>snl>>position;
-    cout<<"NV01"<<" "<<name<<" ";
-    ll lht=lcb*snl;
-    ll lt=0;
-    if(snl>=25)lt=lht*20/100;
-    else if(snl>=22&&snl<=25)lt=lht*10/100;
-    cout<<lht<<" "<<lt<<" ";
-    ll qht=0;
-    if(position=="GD")qht=250000;
-    else if(position=="PGD")qht=200000;
-    else if(position=="TP")qht=180000;
-    else if(position=="NV")qht=150000;
-    cout<<qht<<" "<<lht+lt+qht;
+      
+};
+int main()
+{
+    //fi;fo;
+   Employee e;
+   cin>>e;
+   e.display();
+   
+   
     return 0;
 }
-
