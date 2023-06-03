@@ -1,43 +1,61 @@
-#include <bits/stdc++.h>
-#define f(i,a,b) for(int i=a;i<=b;i++)
-#define f1(i,a,b) for(int i=a;i>=b;i--)
-#define fi freopen("DATA.in","r",stdin)
-#define fi2 freopen("DATA2.in","r",stdin)
+#include<bits/stdc++.h>
+#define fi freopen("Ptit.in","r",stdin)
 #define fo freopen("PTIT.out","w",stdout)
-#define ll long long
-#define l length()
-#define PI 3.141592653589793238
 using namespace std;
-
-void goi()
+//(a+bi)(c+di)
+//=ac+adi+bci-bd
+/*(a+bi)^2
+=(a^2+2abi-b^2)*/
+class Complex
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+     private:
+            int real_partA;
+            int imaginary_partA;
+            int real_partB;
+            int imaginary_partB;
+     public:
+            Complex(){}
+            void getC()
+            {
+                int real_partC=real_partA+real_partB;
+                int imaginary_partC=imaginary_partA+imaginary_partB;
+                cout<<real_partC*real_partA-imaginary_partC*imaginary_partA;
+                if(real_partA*imaginary_partC+real_partC*imaginary_partA>0)cout<<" + ";
+                else cout<<" - ";
+                cout<<abs(real_partA*imaginary_partC+real_partC*imaginary_partA)<<"i"<<", ";
+            }   
+            void getD()
+            {
+                int real_partD=real_partA+real_partB;
+                int imaginary_partD=imaginary_partA+imaginary_partB;
+                cout<<real_partD*real_partD-imaginary_partD*imaginary_partD;
+                if(2*real_partD*imaginary_partD>0)cout<<" + ";
+                else cout<<" - ";
+                cout<<abs(2*real_partD*imaginary_partD)<<"i"<<endl;
+                
+            }
+            friend istream& operator>>(istream& input,Complex& c)
+            {
+                input>>c.real_partA>>c.imaginary_partA;
+                input>>c.real_partB>>c.imaginary_partB;
+                return input;
+            }
+            
+};
+int main()
+{
     //fi;fo;
-
-}
-int a,b,c,d;
-int main() {
-    goi();
-	int test;
-	cin>>test;
-	while(test--)
+    int test;
+    cin>>test;
+    while(test--)
     {
-        cin>>a>>b>>c>>d;
-        int x=(a+c);
-        int y=(b+d);
-        int ptc=x*a-y*b;
-        int pac=x*b+y*a;
-        int ptd=x*x-y*y;
-        int pad=2*x*y;
-        //cout<<ptc<<" + "<<pac<<"i, "<<ptd<<" + "<<pad<<"i"<<endl;
-        cout<<ptc<<" ";
-        if(pac>=0)cout<<"+ ";
-        else cout<<"- ";
-        cout<<abs(pac)<<"i, "<<ptd<<" ";
-        if(pad>=0)cout<<"+ ";
-        else cout<<"- ";
-        cout<<abs(pad)<<"i "<<endl;
+        Complex c;
+        cin>>c;
+        c.getC();
+        c.getD();
     }
+    
+   
+   
+    return 0;
 }
