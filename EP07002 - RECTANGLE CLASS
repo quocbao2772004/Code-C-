@@ -1,36 +1,52 @@
-#include <bits/stdc++.h>
-#define f(i,a,b) for(int i=a;i<=b;i++)
-#define fi freopen("DATA.in","r",stdin)
-#define fo freopen("PTIT.out","w",stdout)
-#define ll long long
+#include<bits/stdc++.h>
 using namespace std;
-
-void goi()
+class Rectangle
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    //fi;fo;
-
-}
-
-string s;
-ll n,m,p;
-int test;
+     private:
+            int length;
+            int width;
+            string color;
+     public:
+            Rectangle(){}
+            void getPerimeter()
+            {
+                cout<<(length+width)*2<<" ";
+            }
+            void getArea()
+            {
+                cout<<length*width<<" ";
+            }
+            void getColor()
+            {
+                color[0]=toupper(color[0]);
+                for(int i=1;i<=color.size()-1;i++)
+                {
+                    color[i]=tolower(color[i]);
+                }
+                cout<<color<<endl;
+            }
+            bool check()
+            {
+                if(length>0&&width>0)return 1;
+                return 0;
+            }
+            friend istream& operator >> (istream& input, Rectangle& r)
+            {
+                input>>r.length>>r.width>>r.color;
+                return input;
+            }
+};
 int main()
 {
-    goi();
-    cin>>n>>m>>s;
-    if(n>0&&m>0)
+    Rectangle r;
+    cin>>r;
+    if(r.check()==0)
     {
-    if(s[0]>='a'&&s[0]<='z')s[0]-=32;
-    f(i,1,s.length()-1)
-    {
-        if(s[i]>='A'&&s[i]<='Z')s[i]+=32;
+        cout<<"INVALID";
+        return 0;
     }
-    cout<<(n+m)*2<<" "<<n*m<<" "<<s;
-    }
-    else cout<<"INVALID";
-
+    r.getPerimeter();
+    r.getArea();
+    r.getColor();
     return 0;
 }
