@@ -1,42 +1,56 @@
-#include <bits/stdc++.h>
-#define f(i,a,b) for(int i=a;i<=b;i++)
-#define fi freopen("DATA.in","r",stdin)
+#include<bits/stdc++.h>
+#define fi freopen("Ptit.in","r",stdin)
 #define fo freopen("PTIT.out","w",stdout)
-#define ll long long
 using namespace std;
-
-void goi()
+class Triangle
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    //fi;fo;
-
-}
-
-double a,b,c,d,e,f;
-int n,m,p;
-int test;
+      private:
+             double x;
+             double y;
+      public: 
+             Triangle(){}
+             double getDistance(Triangle& a,Triangle& b)
+             {
+                 return sqrt(pow(a.x-b.x,2)+pow(a.y-b.y,2));
+             }
+             bool check(Triangle& a, Triangle& b, Triangle& c)
+             {
+                double ab=getDistance(a,b);
+                double bc=getDistance(b,c);
+                double ac=getDistance(a,c);
+                if(ab==0||ac==0||bc==0||ab+ac<=bc||ab+bc<=ac||bc+ac<=ab)return 0;  
+                return 1;
+             }
+             void getArea(Triangle& a, Triangle& b, Triangle& c)
+             {
+                double ab=getDistance(a,b);
+                double bc=getDistance(b,c);
+                double ac=getDistance(a,c);
+                double p=ab+bc+ac;
+                double ans=sqrt(p*(p-2*ab)*(p-2*bc)*(p-2*ac))/4;
+                cout<<fixed<<setprecision(2)<<ans<<endl;
+             }
+             friend istream& operator>>(istream& input,Triangle& a)
+             {
+                input>>a.x>>a.y;
+                return input;
+             }
+};
 int main()
 {
-    goi();
+    //fi;fo;
+    int test;
     cin>>test;
     while(test--)
     {
-        cin>>a>>b>>c>>d>>e>>f;
-        double ab=sqrt((a-c)*(a-c)+(b-d)*(b-d));
-        double ac=sqrt((a-e)*(a-e)+(b-f)*(b-f));
-        double bc=sqrt((e-c)*(e-c)+(f-d)*(f-d));
-        if(ab==0||ac==0||bc==0||ab+ac<=bc||ab+bc<=ac||bc+ac<=ab){cout<<"INVALID"<<endl;}
-        else
-        {
-            double p=ab+bc+ac;
-            double ans=sqrt(p*(p-2*ab)*(p-2*bc)*(p-2*ac))/4;
-            cout<<fixed<<setprecision(2)<<ans<<endl;
-        }
+         Triangle a,b,c;
+         cin>>a>>b>>c;
+         if(a.check(a,b,c))
+         a.getArea(a,b,c);
+         else cout<<"INVALID";
+         cout<<endl;
     }
-
-
-
+   
+   
     return 0;
 }
