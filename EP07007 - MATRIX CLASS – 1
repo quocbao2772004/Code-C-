@@ -1,54 +1,84 @@
-#include <bits/stdc++.h>
-#define f(i,a,b) for(int i=a;i<=b;i++)
-#define fi freopen("DATA.in","r",stdin)
+#include<bits/stdc++.h>
+#define fi freopen("Ptit.in","r",stdin)
 #define fo freopen("PTIT.out","w",stdout)
-#define ll long long
 using namespace std;
-
-void goi()
+class matrix
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    //fi;fo;
-
-}
-
-map<int,map<int,int>>a,b;
-int n,m;
-int test;
+     private:
+             int n;
+             int m;
+             int a[50][50];
+     public:
+             matrix(){}
+             void solve()
+             {
+                int b[50][50],c[50][50];
+                memset(b,0,sizeof(b));
+                memset(c,0,sizeof(c));
+                for(int i=0;i<n;i++)
+                {
+                    for(int j=0;j<m;j++)
+                    {
+                        b[j][i]=a[i][j];
+                    }
+                }
+                for(int i=0;i<n;i++)
+                {
+                    for(int j=0;j<n;j++)
+                    {
+                        for(int k=0;k<m;k++)
+                        {
+                           c[i][j]+=a[i][k]*b[k][j];
+                        }
+                    }
+                }
+                for(int i=0;i<n;i++)
+                {
+                    for(int j=0;j<n;j++)
+                    {
+                        cout<<c[i][j]<<" ";
+                    }
+                    cout<<endl;
+                }
+             }    
+             friend istream& operator>>(istream& input,matrix& matran)
+             {
+                input>>matran.n>>matran.m;
+                for(int i=0;i<matran.n;i++)
+                {
+                    for(int j=0;j<matran.m;j++)
+                    {
+                        input>>matran.a[i][j];
+                    }
+                }
+                return input;
+             }   
+             friend ostream& operator<<(ostream& output,matrix& matran)
+             {
+                for(int i=0;i<matran.n;i++)
+                {
+                    for(int j=0;j<matran.m;j++)
+                    {
+                        output<<matran.a[i][j]<<" ";
+                    }
+                    output<<endl;
+                }
+                return output;
+             }
+};
 int main()
 {
-    goi();
+    //fi;fo;
+    int test;
     cin>>test;
     while(test--)
     {
-        map<int,map<int,int>>c;
-        cin>>n>>m;
-        f(i,1,n)
-        f(j,1,m)cin>>a[i][j];
-        f(i,1,n)
-        {
-            f(j,1,m)
-            {
-                b[j][i]=a[i][j];
-            }
-        }
-        f(i,1,n)
-        {
-            f(j,1,n)
-            {
-                f(k,1,m)
-                {
-                    c[i][j]+=a[i][k]*b[k][j];
-                }
-            }
-        }
-        f(i,1,n)
-        {
-            f(j,1,n)cout<<c[i][j]<<" ";
-            cout<<endl;
-        }
+         matrix matran;
+         cin>>matran;
+         matran.solve();
+         cout<<endl;
     }
+   
+   
     return 0;
 }
